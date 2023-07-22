@@ -5,6 +5,7 @@ import { getTextContent } from 'notion-utils'
 import { FONTS_SANS, FONTS_SERIF } from '@/consts'
 import { useConfig } from '@/lib/config'
 import Toggle from '@/components/notion-blocks/Toggle'
+import Image from 'next/image'
 
 // Lazy-load some heavy components & override the renderers of some block types
 const components = {
@@ -105,7 +106,7 @@ const mapPageUrl = id => `https://www.notion.so/${id.replace(/-/g, '')}`
  *
  * @param props - Anything that react-notion-x/NotionRenderer supports
  */
-export default function NotionRenderer (props) {
+export default function NotionRenderer(props) {
   const config = useConfig()
 
   const font = {
@@ -120,19 +121,33 @@ export default function NotionRenderer (props) {
         case 'toggle':
           block.type += '_nobelium'
           break
+        case 'image':
+          block.type += '_custom'
+          break
       }
     }
   }
 
+  // Define custom components for specific block types
+  const components = {
+    image_custom: ({ block }) => {
+      const src = block.format.display_source
+      return (
+        <div style={{ maxWidth: '100%' }}>
+          <Image src={src} alt="" layout="responsive"  />
+        </div>
+      )
+    },
+    // Define other custom components here
+  }
+
   return (
     <>
-      <style jsx global>
-        {`
+      <style jsx global>{`
         .notion {
           --notion-font: ${font};
         }
-        `}
-      </style>
+      `}</style>
       <Renderer
         components={components}
         mapPageUrl={mapPageUrl}
