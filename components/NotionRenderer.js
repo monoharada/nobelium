@@ -5,7 +5,7 @@ import { getTextContent } from 'notion-utils'
 import { FONTS_SANS, FONTS_SERIF } from '@/consts'
 import { useConfig } from '@/lib/config'
 import Toggle from '@/components/notion-blocks/Toggle'
-import Image from 'next/Image'
+import Image from 'next/image'
 
 // Lazy-load some heavy components & override the renderers of some block types
 const components = {
