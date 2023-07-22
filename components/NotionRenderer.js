@@ -5,12 +5,12 @@ import { getTextContent } from 'notion-utils'
 import { FONTS_SANS, FONTS_SERIF } from '@/consts'
 import { useConfig } from '@/lib/config'
 import Toggle from '@/components/notion-blocks/Toggle'
-
+import Image from 'next/Image'
 
 // Lazy-load some heavy components & override the renderers of some block types
 const components = {
   /* Lazy-load */
-
+  nextImage:Image,
   // Code block
   Code: dynamic(async () => {
     return function CodeSwitch (props) {
