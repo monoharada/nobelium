@@ -26,7 +26,8 @@ const NavBar = () => {
                 key={link.id}
                 className="block ml-4 text-black dark:text-gray-50 nav"
               >
-                <Link href={link.to} target={link.external ? '_blank' : null}>{link.name}</Link>
+
+                <Link href={link.to} target={link.external ? '_blank' : null} prefetch={[0,3].includes(link.id)}>{link.name}</Link>
               </li>
             )
         )}
@@ -104,7 +105,7 @@ export default function Header ({ navBarTitle, fullWidth }) {
           />
         </svg>
         <div className="flex items-center">
-          <Link href="/" aria-label={BLOG.title}>
+          <Link href="/" aria-label={BLOG.title}  prefetch={false}>
             <Image
               src={favicon}
               width={24}
