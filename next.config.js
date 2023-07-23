@@ -1,4 +1,10 @@
-module.exports = {
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true'
+})
+
+module.exports = withBundleAnalyzer({
+  reactStrictMode: true,
+  swcMinify: true,
   images: {
     domains: ['gravatar.com','res.cloudinary.com','images.unsplash.com']
   },
@@ -18,7 +24,11 @@ module.exports = {
       }
     ]
   },
-  transpilePackages: ['dayjs']
+  transpilePackages: ['dayjs'],
+  env: {
+    NEXT_PUBLIC_ENV: 'PRODUCTION', //your next configs goes here
+},
+  
   // webpack: (config, { dev, isServer }) => {
   //   // Replace React with Preact only in client production build
   //   if (!dev && !isServer) {
@@ -30,4 +40,4 @@ module.exports = {
   //   }
   //   return config
   // }
-}
+})
