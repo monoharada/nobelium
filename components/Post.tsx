@@ -38,7 +38,7 @@ export default function Post (props) {
           { 'max-w-3xl px-4': !fullWidth }
         )}>
           <div className="flex mb-4">
-            <a href={BLOG.socialLink || '#'} className="flex">
+            <a href={BLOG.socialLink || '#'} className="flex items-center">
               <Image
                 alt={BLOG.author}
                 width={24}
