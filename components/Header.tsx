@@ -26,11 +26,7 @@ const NavBar = () => {
                 key={link.id}
                 className="block ml-4 text-black dark:text-gray-50 nav"
               >
-                {[0,3].includes(link.id) ?
                 <Link href={link.to} target={link.external ? '_blank' : null}>{link.name}</Link>
-                :
-                <a href={link.to} target={link.external ? '_blank' : null}>{link.name}</a>
-}
               </li>
             )
         )}
@@ -108,7 +104,7 @@ export default function Header ({ navBarTitle, fullWidth }) {
           />
         </svg>
         <div className="flex items-center">
-          <a href="/" aria-label={BLOG.title}>
+          <Link href="/" aria-label={BLOG.title}>
             <Image
               src={favicon}
               width={24}
@@ -116,7 +112,7 @@ export default function Header ({ navBarTitle, fullWidth }) {
               alt={BLOG.title}
               onError={() => setFavicon(true)}
             />
-          </a>
+          </Link>
           <HeaderName
             ref={titleRef}
             siteTitle={BLOG.title}
