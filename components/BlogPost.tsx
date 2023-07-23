@@ -26,7 +26,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
           <h2 className="text-lg md:text-xl font-medium mb-2 cursor-pointer text-black dark:text-gray-100">
             {post.title}
           </h2>
-        <div className='flex flex-col gap-x-2 flex-shrink-0'>
+        <div className='flex flex-col gap-x-2 flex-shrink-0 text-sm'>
         <time className="flex-shrink-0 text-gray-600 dark:text-gray-400">
             初稿：<FormattedDate date={post.date} />
           </time>
