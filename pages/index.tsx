@@ -27,7 +27,10 @@ export default function Blog ({ postsToShow, page, showNext }) {
   return (
     <Container title={title} description={description}>
       {postsToShow.map(post => (
+        <>
         <BlogPost key={post.id} post={post} />
+        <hr />
+        </>
       ))}
       {showNext && <Pagination page={page} showNext={showNext} />}
     </Container>
