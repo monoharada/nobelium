@@ -1,7 +1,12 @@
 import { useRouter } from 'next/router'
 import useAckee from 'use-ackee'
 
-const Ackee = ({ ackeeServerUrl, ackeeDomainId }) => {
+interface AckeeProps {
+  ackeeServerUrl: string;
+  ackeeDomainId: string;
+}
+
+const Ackee: React.FC<AckeeProps> = ({ ackeeServerUrl, ackeeDomainId }) => {
   const router = useRouter()
   useAckee(
     router.asPath,

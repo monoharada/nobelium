@@ -1,6 +1,6 @@
-const { config: BLOG } = require('../lib/server/config')
+import { config as BLOG } from './server/config.js'
 
-function cjk() {
+function cjk(): string | null {
   switch (BLOG.lang.toLowerCase()) {
     case 'zh-cn':
     case 'zh-sg':
@@ -20,4 +20,4 @@ function cjk() {
   }
 }
 
-module.exports = cjk
+export default cjk

@@ -1,12 +1,10 @@
 import { createContext, useContext } from 'react'
 
 const BlockMapContext = createContext({})
-export function BlockMapProvider ({ blockMap, children }) {
+export function BlockMapProvider({ blockMap, children }) {
   const collectionId = Object.keys(blockMap.collection)[0]
-  const pageId =
-    Object.values(blockMap.block)
-      .find(block => block.value.type === 'page' && block.value.parent_id === collectionId)
-      .value.id
+  // @ts-ignore
+  const pageId = Object.values(blockMap.block).find((block) => block.value.type === 'page' && block.value.parent_id === collectionId).value.id
 
   const blockMapAltered = {
     ...blockMap,
@@ -20,6 +18,6 @@ export function BlockMapProvider ({ blockMap, children }) {
   )
 }
 
-export default function useBlockMap () {
+export default function useBlockMap() {
   return useContext(BlockMapContext)
 }

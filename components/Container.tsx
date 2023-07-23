@@ -1,18 +1,34 @@
+import React, { ReactNode } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { useConfig } from '@/lib/config'
 import Head from 'next/head'
-import PropTypes from 'prop-types'
 import cn from 'classnames'
-// import BlogPost from './BlogPost'
 
-const Container = ({ children, layout, fullWidth, ...customMeta }) => {
+interface ContainerProps {
+  children: ReactNode;
+  layout?: string;
+  fullWidth?: boolean;
+  customMeta?: {
+    title?: string;
+    description?: string;
+    type?: string;
+    date?: string;
+    slug?: string;
+  };
+}
+
+const Container: React.FC<ContainerProps> = ({ children, layout, fullWidth = false, ...customMeta }) => {
   const BLOG = useConfig()
 
   const url = BLOG.path.length ? `${BLOG.link}/${BLOG.path}` : BLOG.link
   const meta = {
     title: BLOG.title,
+    description: BLOG.description || 'default description',
     type: 'website',
+    slug: BLOG.slug,
+    date: BLOG.date,
+
     ...customMeta
   }
   return (
@@ -75,7 +91,7 @@ const Container = ({ children, layout, fullWidth, ...customMeta }) => {
         />
         <main className={cn(
           'flex-grow transition-all',
-          layout !== 'blog' && ['self-center px-4', fullWidth ? 'md:px-24' : 'w-full max-w-2xl']
+          layout !== 'blog' && ['self-center px-4', fullWidth ? 'md:px-24' : 'w-full max-w-3xl']
         )}>
           {children}
         </main>
@@ -85,8 +101,8 @@ const Container = ({ children, layout, fullWidth, ...customMeta }) => {
   )
 }
 
-Container.propTypes = {
-  children: PropTypes.node
-}
+// Container.propTypes = {
+//   children: PropTypes.node
+// }
 
 export default Container

@@ -19,9 +19,10 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
     <Container>
       <div className="relative">
         <input
+          autoFocus={true}
           type="text"
           placeholder={
-            currentTag ? `Search in #${currentTag}` : 'Search Articles'
+            currentTag ? `#${currentTag} を検索` : '記事を検索'
           }
           className="block w-full border px-4 py-2 border-black bg-white text-black dark:bg-night dark:border-white dark:text-white"
           onChange={e => setSearchValue(e.target.value)}

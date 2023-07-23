@@ -31,11 +31,11 @@ export async function getAllPosts ({ includePages = false }) {
     return null
   } else {
     // Construct Data
-    const pageIds = getAllPageIds(collectionQuery)
+    const pageIds = getAllPageIds(collectionQuery,null)
     const data = []
     for (let i = 0; i < pageIds.length; i++) {
       const id = pageIds[i]
-      const properties = (await getPageProperties(id, block, schema)) || null
+      const properties = (await getPageProperties(id, block, schema))  || { fullWidth: undefined, date: undefined }
 
       // Add fullwidth to properties
       properties.fullWidth = block[id].value?.format?.page_full_width ?? false

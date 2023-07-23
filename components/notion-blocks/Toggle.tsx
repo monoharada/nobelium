@@ -1,7 +1,14 @@
 import { Text } from 'react-notion-x'
 import cn from 'classnames'
+import { ReactNode } from 'react'
+import { Block} from 'notion-types'
 
-export default function Toggle ({ block, children }) {
+interface ToggleProps {
+  block: Block;
+  children?: ReactNode;
+}
+
+export default function Toggle ({ block, children }: ToggleProps) {
   return (
     <details className={cn(
       'nobelium-block nobelium-toggle',

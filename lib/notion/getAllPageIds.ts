@@ -10,6 +10,7 @@ export default function getAllPageIds (collectionQuery, viewId) {
     Object.values(views).forEach(view => {
       view?.collection_group_results?.blockIds?.forEach(id => pageSet.add(id))
     })
+    // @ts-ignore
     pageIds = [...pageSet]
   }
   return pageIds

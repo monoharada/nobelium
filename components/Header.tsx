@@ -5,6 +5,8 @@ import { useConfig } from '@/lib/config'
 import { useLocale } from '@/lib/locale'
 import useTheme from '@/lib/theme'
 
+
+
 const NavBar = () => {
   const BLOG = useConfig()
   const locale = useLocale()
@@ -39,12 +41,12 @@ export default function Header ({ navBarTitle, fullWidth }) {
 
   // Favicon
 
-  const resolveFavicon = fallback => !fallback && dark ? '/favicon.dark.png' : '/favicon.png'
+  const resolveFavicon = (fallback = false ) => !fallback && dark ? '/favicon.dark.png' : '/favicon.png'
   const [favicon, _setFavicon] = useState(resolveFavicon())
   const setFavicon = fallback => _setFavicon(resolveFavicon(fallback))
 
   useEffect(
-    () => setFavicon(),
+    () => setFavicon('/favicon.dark.png'),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [dark]
   )

@@ -1,3 +1,9 @@
+declare global {
+  interface Window {
+    gtag: any; // You can replace `any` with a more specific type if you want
+  }
+}
+
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (gTag, url) => {
   window.gtag('config', gTag, {
