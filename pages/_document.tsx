@@ -60,7 +60,7 @@ class MyDocument extends Document {
             config.lang.slice(0, 2).toLocaleLowerCase()
           ) && (
             <>
-              <link
+              {/* <link
                 rel="preconnect"
                 href="https://fonts.gstatic.com"
                 crossOrigin="anonymous"
@@ -85,7 +85,7 @@ class MyDocument extends Document {
                     config.font === 'serif' ? 'Serif' : 'Sans'
                   }+${CJK()}:wght@400;500;700&display=swap`}
                 />
-              </noscript>
+              </noscript> */}
             </>
           )}
           <link rel="icon" href="/favicon.png" />
