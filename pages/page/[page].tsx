@@ -9,7 +9,12 @@ const Page = ({ postsToShow, page, showNext }) => {
   return (
     <Container>
       {postsToShow &&
-        postsToShow.map(post => <BlogPost key={post.id} post={post} />)}
+        postsToShow.map(post => ( 
+        <>
+        <BlogPost key={post.id} post={post} />
+        <hr className='mb-12'/>
+        </>
+        ))}
       <Pagination page={page} showNext={showNext} />
     </Container>
   )
