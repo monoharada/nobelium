@@ -46,14 +46,14 @@ export default function Post (props) {
                 src={`https://gravatar.com/avatar/${emailHash}`}
                 className="rounded-full"
               />
-              <p className="ml-2 md:block">{BLOG.author}</p>
+              <p className="ml-2 md:block text-sm">{BLOG.author}</p>
             </a>
             <span className="block">&nbsp;/&nbsp;</span>
           </div>
-          <div className="mr-2 mb-4 md:ml-0">
+          <div className="mr-2 mb-4 md:ml-0 text-sm">
            <FormattedDate date={post.date} />:初稿
           </div>
-          <div className="mr-2 mb-4 md:ml-2">
+          <div className="mr-2 mb-4 md:ml-2 text-sm">
             <FormattedDate date={post.update_date} />:更新
           </div>
           {post.tags && (
