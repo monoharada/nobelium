@@ -29,7 +29,7 @@ export default function Blog ({ postsToShow, page, showNext }) {
       {postsToShow.map(post => (
         <>
         <BlogPost key={post.id} post={post} />
-        <hr />
+        <hr className='mb-12'/>
         </>
       ))}
       {showNext && <Pagination page={page} showNext={showNext} />}
