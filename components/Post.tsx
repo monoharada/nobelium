@@ -80,17 +80,20 @@ export default function Post(props) {
                 <CldImage
                   src={post.cover}
                   loading='eager'
-                  height={360}
+                  width={736}
+                  height={490}
+                  crop="thumb"
                   alt={'Post key visual'}
                   quality={70}
-                  // sizes="(min-width: 50rem) 48rem, 100vw"
+                  sizes="(min-width: 50rem) 48rem, 100vw"
                   className='w-full'
                 />
               ) : (
                 <Image
                   src={post.cover}
                   loading='eager'
-                  height={360}
+                  width={736}
+                  height={490}
                   alt={'Post key visual'}
                   quality={70}
                   sizes="(min-width: 50rem) 48rem, 100vw"
