@@ -1,9 +1,9 @@
 const BLOG = {
-  title: 'mh blog',
-  author: 'モノハラダ',
+  title: 'Hyper high context blog',
+  author: 'ハラダ',
   email: 'harada@monosus.co.jp',
   link: 'https://nobelium.vercel.app',
-  description: 'タイトル変えたい。。',
+  description: 'タイトル変えた。。',
   lang: 'ja-JP', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Tokyo', // Your Notion posts' date will be interpreted as this timezone. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'auto', // ['light', 'dark', 'auto'],
