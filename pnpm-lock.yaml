@@ -46,6 +46,9 @@ dependencies:
   next:
     specifier: ^13.2.4
     version: 13.2.4(react-dom@18.2.0)(react@18.2.0)
+  next-cloudinary:
+    specifier: ^4.16.3
+    version: 4.16.3(next@13.2.4)(react@18.2.0)
   notion-client:
     specifier: ^6.16.0
     version: 6.16.0
@@ -121,6 +124,29 @@ packages:
   /@builder.io/partytown@0.8.0:
     resolution: {integrity: sha512-M6H7nSMwW2dHd1/MQ+9J1Jqdw22uhl1nKv90kIiL9G7gjFVqqouQp4qSS1oZclmtW1XjAa4Q5UnbHB4iytmxZA==}
     hasBin: true
+    dev: false
+
+  /@cloudinary-util/url-loader@3.10.0:
+    resolution: {integrity: sha512-RNp6WayU6e5ikA7yCRqNhp0lOwLl82vLco9EwpES2si6Hb+g9yEaeTYvobD44ISQeJUnPl6e1c/AEYVSjfzwrg==}
+    dependencies:
+      '@cloudinary-util/util': 2.2.1
+      '@cloudinary/url-gen': 1.11.0
+    dev: false
+
+  /@cloudinary-util/util@2.2.1:
+    resolution: {integrity: sha512-MEIqn5WtPP3mxSMTNNfpqlGS1UquAXcjmVdY/t/edD/ZWVjI85viBiOMIuF0W6n6UF5gTstLymfQNYx0YO/GZg==}
+    dev: false
+
+  /@cloudinary/transformation-builder-sdk@1.4.0:
+    resolution: {integrity: sha512-atU25SFAmR4aXlPHDs7fERmcl0OSnwQl80b5Fy3unvwHSj10fnqHBdLeeOEBNaOXdF3WQLmNSGMkOV8IlDPfMA==}
+    dependencies:
+      '@cloudinary/url-gen': 1.11.0
+    dev: false
+
+  /@cloudinary/url-gen@1.11.0:
+    resolution: {integrity: sha512-jShJoh+5JQfsMnh/NUqe8Z2EzZo/++BQ/CuF/VND4hA7zNpXn6vYi5JMIZ4YvLGRrqHuMtqCFahaTe1RBsLJJQ==}
+    dependencies:
+      '@cloudinary/transformation-builder-sdk': 1.4.0
     dev: false
 
   /@corex/deepmerge@4.0.37:
@@ -2976,6 +3002,18 @@ packages:
 
   /neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
+    dev: false
+
+  /next-cloudinary@4.16.3(next@13.2.4)(react@18.2.0):
+    resolution: {integrity: sha512-dkwvSAFyOvSBd+gBeeI0UaQjnJcXDs1FQYrXIcrF0outdG//02VNXUA45ieOYKhT2/f9NTnHsyfRhizEb0hu/A==}
+    peerDependencies:
+      next: ^12 || ^13
+      react: ^17 || ^18
+    dependencies:
+      '@cloudinary-util/url-loader': 3.10.0
+      '@cloudinary-util/util': 2.2.1
+      next: 13.2.4(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
     dev: false
 
   /next-sitemap@4.0.5(@next/env@13.2.4)(next@13.2.4):

@@ -6,6 +6,7 @@ import { FONTS_SANS, FONTS_SERIF } from '@/consts'
 import { useConfig } from '@/lib/config'
 import Toggle from '@/components/notion-blocks/Toggle'
 import Image from 'next/image'
+import { CldImage } from 'next-cloudinary';
 import { Block, ExtendedRecordMap } from 'notion-types'
 
 interface NotionBlockProps {
@@ -106,7 +107,7 @@ const components = {
   ),
 
   image_custom: ({ block }) => {
-   
+
     const src = block.format.display_source;
     const width = block.format.block_width || 300; // デフォルトの幅を300に設定
     const height = width * (block.format.block_aspect_ratio || 1); // デフォルトのアスペクト比を1に設定
@@ -114,7 +115,7 @@ const components = {
     const flattenedCaption = captionArray.flat().join(''); // 配列をフラットにして文字列に結合する
 
     return (
-      <Image src={src} width={width} height={height} alt={flattenedCaption} />
+      <CldImage src={src} width={width} height={height} alt={flattenedCaption} />
     );
 
 
