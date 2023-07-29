@@ -7,6 +7,7 @@ import FormattedDate from '@/components/FormattedDate'
 import TagItem from '@/components/TagItem'
 import NotionRenderer from '@/components/NotionRenderer'
 import TableOfContents from '@/components/TableOfContents'
+import { CldImage } from 'next-cloudinary'
 
 
 /**
@@ -74,12 +75,28 @@ export default function Post(props) {
         <div className={fullWidth ? 'flex-1 pr-4' : 'flex-none w-full max-w-3xl px-4 mt-6'}>
           {post.cover && (
             <figure>
-              <Image
-                src={post.cover}
-                alt='post key visual'
-                quality={70}
-                sizes="(min-width: 50rem) 48rem, 100vw"
-              />
+              {post.cover.includes('res.cloudinary.com') ? (
+
+                <CldImage
+                  src={post.cover}
+                  loading='eager'
+                  height={360}
+                  alt={'Post key visual'}
+                  quality={70}
+                  sizes="(min-width: 50rem) 48rem, 100vw"
+                  className='w-full'
+                />
+              ) : (
+                <Image
+                  src={post.cover}
+                  loading='eager'
+                  height={360}
+                  alt={'Post key visual'}
+                  quality={70}
+                  sizes="(min-width: 50rem) 48rem, 100vw"
+                  className='w-full'
+                />)
+              }
             </figure>
           )}
           <NotionRenderer recordMap={blockMap} />
