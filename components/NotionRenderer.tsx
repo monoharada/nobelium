@@ -116,14 +116,28 @@ const components = {
 
     return (
       <figure className="w-full">
-        <CldImage
-        src={src}
-        width={width}
-        height={height}
-        alt={flattenedCaption}
-        quality={70}
-        sizes="(min-width: 50rem) 48rem, 100vw"
-        />
+        {src.includes('res.cloudinary.com') ? (
+
+          <CldImage
+          src={src}
+          width={width}
+          height={height}
+          alt={flattenedCaption}
+          quality={70}
+          sizes="(min-width: 50rem) 48rem, 100vw"
+          className='w-full'
+          />
+          ):(
+          <Image
+          src={src}
+          width={width}
+          height={height}
+          alt={flattenedCaption}
+          quality={70}
+          sizes="(min-width: 50rem) 48rem, 100vw"
+          className='w-full'
+          />)
+          }
       </figure>
     );
 
