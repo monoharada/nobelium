@@ -10,6 +10,12 @@ import filterPublishedPosts from './filterPublishedPosts'
 /**
  * @param {{ includePages: boolean }} - false: posts only / true: include pages
  */
+
+interface Properties {
+  fullWidth?: boolean;
+  date?: any;
+  cover?: string;
+}
 export async function getAllPosts ({ includePages = false }) {
   const id = idToUuid(process.env.NOTION_PAGE_ID)
 
@@ -35,18 +41,19 @@ export async function getAllPosts ({ includePages = false }) {
     const data = []
     for (let i = 0; i < pageIds.length; i++) {
       const id = pageIds[i]
-      const properties = (await getPageProperties(id, block, schema))  || { fullWidth: undefined, date: undefined }
+      const properties : Properties = (await getPageProperties(id, block, schema))  || { fullWidth: undefined, date: undefined, cover: undefined }
+// Add fullwidth to properties
+properties.fullWidth = block[id].value?.format?.page_full_width ?? false
+// Convert date (with timezone) to unix milliseconds timestamp
+properties.date = (
+  properties.date?.start_date
+    ? dayjs.tz(properties.date?.start_date)
+    : dayjs(block[id].value?.created_time)
+).valueOf()
+// Get cover image
+properties.cover = block[id].value?.format?.page_cover ?? null
 
-      // Add fullwidth to properties
-      properties.fullWidth = block[id].value?.format?.page_full_width ?? false
-      // Convert date (with timezone) to unix milliseconds timestamp
-      properties.date = (
-        properties.date?.start_date
-          ? dayjs.tz(properties.date?.start_date)
-          : dayjs(block[id].value?.created_time)
-      ).valueOf()
-
-      data.push(properties)
+data.push(properties)
     }
 
     // remove all the the items doesn't meet requirements

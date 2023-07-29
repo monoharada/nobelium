@@ -8,6 +8,7 @@ import TagItem from '@/components/TagItem'
 import NotionRenderer from '@/components/NotionRenderer'
 import TableOfContents from '@/components/TableOfContents'
 
+
 /**
  * A post renderer
  *
@@ -19,7 +20,7 @@ import TableOfContents from '@/components/TableOfContents'
  * @prop {string}   emailHash  - Author email hash (for Gravatar)
  * @prop {boolean} [fullWidth] - Whether in full-width mode
  */
-export default function Post (props) {
+export default function Post(props) {
   const BLOG = useConfig()
   const { post, blockMap, emailHash, fullWidth = false } = props
   const { dark } = useTheme()
@@ -51,7 +52,7 @@ export default function Post (props) {
             <span className="block">&nbsp;/&nbsp;</span>
           </div>
           <div className="mr-2 mb-4 md:ml-0 text-sm">
-           <FormattedDate date={post.date} />:初稿
+            <FormattedDate date={post.date} />:初稿
           </div>
           <div className="mr-2 mb-4 md:ml-2 text-sm">
             <FormattedDate date={post.update_date} />:更新
@@ -65,9 +66,22 @@ export default function Post (props) {
           )}
         </nav>
       )}
-      <div className="self-stretch -mt-4 flex flex-col items-center lg:flex-row lg:items-stretch">
+      <div className="self-stretch flex flex-col items-center lg:flex-row lg:items-stretch">
         {!fullWidth && <div className="flex-1 hidden lg:block" />}
-        <div className={fullWidth ? 'flex-1 pr-4' : 'flex-none w-full max-w-3xl px-4'}>
+
+
+
+        <div className={fullWidth ? 'flex-1 pr-4' : 'flex-none w-full max-w-3xl px-4 mt-6'}>
+          {post.cover && (
+            <figure>
+              <Image
+                src={post.cover}
+                alt='post key visual'
+                quality={70}
+                sizes="(min-width: 50rem) 48rem, 100vw"
+              />
+            </figure>
+          )}
           <NotionRenderer recordMap={blockMap} />
         </div>
         <div className={cn('order-first lg:order-[unset] w-full lg:w-auto max-w-3xl lg:max-w-[unset] lg:min-w-[160px]', fullWidth ? 'flex-none' : 'flex-1')}>
