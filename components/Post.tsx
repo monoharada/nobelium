@@ -92,7 +92,9 @@ export default function Post(props) {
                 <Image
                   src={post.cover}
                   loading='eager'
-                  layout='fill' objectFit='contain'
+                  width={736}
+                  height={490}
+                  decoding='sync'
                   alt={'Post key visual'}
                   quality={70}
                   sizes="(min-width: 50rem) 48rem, 100vw"
