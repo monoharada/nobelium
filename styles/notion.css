@@ -53,6 +53,7 @@
 .notion {
   @apply text-gray-600 dark:text-gray-300;
   overflow-wrap: break-word;
+  font-size: 1rem;
 }
 .notion,
 .notion-text,

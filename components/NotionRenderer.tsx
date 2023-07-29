@@ -115,7 +115,16 @@ const components = {
     const flattenedCaption = captionArray.flat().join(''); // 配列をフラットにして文字列に結合する
 
     return (
-      <CldImage src={src} width={width} height={height} alt={flattenedCaption} />
+      <figure className="w-full">
+        <CldImage
+        src={src}
+        width={width}
+        height={height}
+        alt={flattenedCaption}
+        quality={70}
+        sizes="(min-width: 50rem) 48rem, 100vw"
+        />
+      </figure>
     );
 
 

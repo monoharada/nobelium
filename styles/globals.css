@@ -55,6 +55,8 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--thumbBG);
 }
 
+img {width: 100%; height:auto;}
+
 ::selection {
   background: rgba(45, 170, 219, 0.3);
 }
